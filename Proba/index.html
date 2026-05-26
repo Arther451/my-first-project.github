@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Конвертер величин | Универсальный калькулятор единиц измерения</title>
+    <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключаем шрифты (опционально) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="converter-card">
+    <div class="header">
+        <h1>
+            <span>📐</span> Конвертер величин
+        </h1>
+        <p>Длина · Масса · Температура · Время</p>
+    </div>
+
+    <div class="converter-body">
+        <!-- вкладки категорий -->
+        <div class="tabs">
+            <button class="tab-btn active" data-category="length">📏 Длина</button>
+            <button class="tab-btn" data-category="mass">⚖️ Масса</button>
+            <button class="tab-btn" data-category="temp">🌡️ Температура</button>
+            <button class="tab-btn" data-category="time">⏱️ Время</button>
+        </div>
+
+        <!-- панель: Длина -->
+        <div id="length-pane" class="category-pane active-pane">
+            <div class="input-group">
+                <label>🔽 Исходное значение</label>
+                <div class="converter-row">
+                    <input type="number" id="length-input" value="1" step="any" placeholder="Введите число">
+                    <select id="length-from">
+                        <option value="meter">Метр (m)</option>
+                        <option value="km">Километр (km)</option>
+                        <option value="cm">Сантиметр (cm)</option>
+                        <option value="mm">Миллиметр (mm)</option>
+                        <option value="mile">Миля (mile)</option>
+                        <option value="yard">Ярд (yd)</option>
+                        <option value="foot">Фут (ft)</option>
+                        <option value="inch">Дюйм (in)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>🎯 Конвертировать в</label>
+                <div class="converter-row">
+                    <select id="length-to">
+                        <option value="meter">Метр (m)</option>
+                        <option value="km" selected>Километр (km)</option>
+                        <option value="cm">Сантиметр (cm)</option>
+                        <option value="mm">Миллиметр (mm)</option>
+                        <option value="mile">Миля (mile)</option>
+                        <option value="yard">Ярд (yd)</option>
+                        <option value="foot">Фут (ft)</option>
+                        <option value="inch">Дюйм (in)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="result-area">
+                <div class="result-value" id="length-result">—</div>
+                <div class="result-sub">результат конвертации</div>
+            </div>
+            <button class="reset-btn" data-reset="length">⟳ Сбросить значения</button>
+        </div>
+
+        <!-- панель: Масса -->
+        <div id="mass-pane" class="category-pane">
+            <div class="input-group">
+                <label>⚖️ Исходная масса</label>
+                <div class="converter-row">
+                    <input type="number" id="mass-input" value="1" step="any">
+                    <select id="mass-from">
+                        <option value="kg">Килограмм (kg)</option>
+                        <option value="g">Грамм (g)</option>
+                        <option value="mg">Миллиграмм (mg)</option>
+                        <option value="ton">Тонна (t)</option>
+                        <option value="lb">Фунт (lb)</option>
+                        <option value="oz">Унция (oz)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>🎯 Перевести в</label>
+                <div class="converter-row">
+                    <select id="mass-to">
+                        <option value="kg">Килограмм (kg)</option>
+                        <option value="g" selected>Грамм (g)</option>
+                        <option value="mg">Миллиграмм (mg)</option>
+                        <option value="ton">Тонна (t)</option>
+                        <option value="lb">Фунт (lb)</option>
+                        <option value="oz">Унция (oz)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="result-area">
+                <div class="result-value" id="mass-result">—</div>
+                <div class="result-sub">результат конвертации</div>
+            </div>
+            <button class="reset-btn" data-reset="mass">⟳ Сбросить значения</button>
+        </div>
+
+        <!-- панель: Температура -->
+        <div id="temp-pane" class="category-pane">
+            <div class="input-group">
+                <label>🌡️ Исходная температура</label>
+                <div class="converter-row">
+                    <input type="number" id="temp-input" value="0" step="any">
+                    <select id="temp-from">
+                        <option value="celsius">Цельсий (°C)</option>
+                        <option value="fahrenheit">Фаренгейт (°F)</option>
+                        <option value="kelvin">Кельвин (K)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>🎯 Перевести в</label>
+                <div class="converter-row">
+                    <select id="temp-to">
+                        <option value="celsius" selected>Цельсий (°C)</option>
+                        <option value="fahrenheit">Фаренгейт (°F)</option>
+                        <option value="kelvin">Кельвин (K)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="result-area">
+                <div class="result-value" id="temp-result">—</div>
+                <div class="result-sub">результат конвертации</div>
+            </div>
+            <button class="reset-btn" data-reset="temp">⟳ Сбросить значения</button>
+        </div>
+
+        <!-- панель: Время -->
+        <div id="time-pane" class="category-pane">
+            <div class="input-group">
+                <label>⏱️ Исходное время</label>
+                <div class="converter-row">
+                    <input type="number" id="time-input" value="1" step="any">
+                    <select id="time-from">
+                        <option value="second">Секунда (сек)</option>
+                        <option value="minute">Минута (мин)</option>
+                        <option value="hour">Час (ч)</option>
+                        <option value="day">День (дн)</option>
+                        <option value="week">Неделя (нед)</option>
+                        <option value="year">Год (год)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>🎯 Перевести в</label>
+                <div class="converter-row">
+                    <select id="time-to">
+                        <option value="second">Секунда (сек)</option>
+                        <option value="minute" selected>Минута (мин)</option>
+                        <option value="hour">Час (ч)</option>
+                        <option value="day">День (дн)</option>
+                        <option value="week">Неделя (нед)</option>
+                        <option value="year">Год (год)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="result-area">
+                <div class="result-value" id="time-result">—</div>
+                <div class="result-sub">результат конвертации</div>
+            </div>
+            <button class="reset-btn" data-reset="time">⟳ Сбросить значения</button>
+        </div>
+    </div>
+    <footer>
+        🔄 Мгновенная конвертация | Введите любое число — результат обновляется автоматически
+    </footer>
+</div>
+
+<!-- Подключаем JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
